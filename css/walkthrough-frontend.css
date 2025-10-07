@@ -62,19 +62,23 @@
     margin-bottom: 25px;
 }
 
+/* Coach image styling - minimal to avoid conflicts but fix alignment */
 .coach-image {
     flex-shrink: 0;
     width: 80px;
     height: 80px;
     border-radius: 50%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .coach-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
 }
 
 .coach-text {
@@ -338,8 +342,8 @@
 }
 
 .vlp-walkthrough-actions .vlp-walkthrough-next {
-    background: #ff6600;
-    color: white;
+    background: #ff6600 !important;
+    color: white !important;
     border: none;
     padding: 10px 16px;
     border-radius: 4px;
@@ -351,7 +355,7 @@
 }
 
 .vlp-walkthrough-actions .vlp-walkthrough-next:hover {
-    background: #e55a00;
+    background: #e55a00 !important;
 }
 
 .vlp-walkthrough-actions .vlp-walkthrough-next:disabled {
@@ -638,8 +642,8 @@
     }
     
     .vlp-walkthrough-actions .vlp-walkthrough-next {
-        background: #000;
-        border: 2px solid #000;
+        background: #ff6600 !important;
+        border: 2px solid #ff6600 !important;
     }
     
     .vlp-walkthrough-actions .vlp-walkthrough-prev {
