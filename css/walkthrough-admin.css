@@ -1,0 +1,530 @@
+/**
+ * Admin styles for AVLP Walkthrough Tour plugin
+ * Following VLP design standards
+ */
+
+/* Admin Header */
+.vlp-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #0066ff;
+}
+
+.vlp-admin-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+/* Status Indicators */
+.status-active {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.status-inactive {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Tour Steps Management */
+#tour-steps-container {
+    margin: 20px 0;
+}
+
+#tour-steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.step-item {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+}
+
+.step-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.step-item.sortable-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed #0066ff;
+    height: 60px;
+}
+
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.step-order {
+    background: #0066ff;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.step-header strong {
+    flex: 1;
+    color: #333;
+    font-size: 16px;
+}
+
+.step-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.step-actions a {
+    color: #0066ff;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.step-actions a:hover {
+    background: #e3f2fd;
+    text-decoration: none;
+}
+
+.step-actions a.delete-step {
+    color: #dc3545;
+}
+
+.step-actions a.delete-step:hover {
+    background: #f8d7da;
+}
+
+.step-content {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.step-content p {
+    margin: 4px 0;
+}
+
+.step-content strong {
+    color: #333;
+}
+
+/* Add Step Form */
+#add-step-form {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.step-form .form-table {
+    margin-bottom: 16px;
+}
+
+.step-form .form-table th {
+    width: 150px;
+    padding: 12px 10px 12px 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.step-form .form-table td {
+    padding: 12px 10px 12px 0;
+}
+
+.step-form .regular-text {
+    width: 100%;
+    max-width: 400px;
+}
+
+.step-form .large-text {
+    width: 100%;
+    max-width: 600px;
+    min-height: 100px;
+}
+
+.step-form .small-text {
+    width: 80px;
+}
+
+/* Button Styles Following VLP Standards */
+.vlp-admin-header .button-primary {
+    background: #ff6600;
+    border-color: #ff6600;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.vlp-admin-header .button-primary:hover {
+    background: #e55a00;
+    border-color: #e55a00;
+    color: white;
+}
+
+.vlp-admin-header .button {
+    background: #0066ff;
+    border-color: #0066ff;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.vlp-admin-header .button:hover {
+    background: #0052cc;
+    border-color: #0052cc;
+    color: white;
+}
+
+/* Form Submit Buttons */
+.submit .button-primary {
+    background: #ff6600;
+    border-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+.submit .button-primary:hover {
+    background: #e55a00;
+    border-color: #e55a00;
+}
+
+.submit .button {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+.submit .button:hover {
+    background: #5a6268;
+    border-color: #5a6268;
+    color: white;
+}
+
+/* Statistics Table */
+.vlp-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+}
+
+.vlp-stats-table th,
+.vlp-stats-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.vlp-stats-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+    border-top: 1px solid #e9ecef;
+}
+
+.vlp-stats-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Notices */
+.notice {
+    border-left: 4px solid #007cba;
+    background: #f0f8ff;
+    padding: 12px;
+    margin: 16px 0;
+    border-radius: 4px;
+}
+
+.notice.notice-info {
+    border-left-color: #007cba;
+    background: #f0f8ff;
+}
+
+.notice.notice-success {
+    border-left-color: #28a745;
+    background: #d4edda;
+}
+
+.notice.notice-error {
+    border-left-color: #dc3545;
+    background: #f8d7da;
+}
+
+.notice.notice-warning {
+    border-left-color: #ffc107;
+    background: #fff3cd;
+}
+
+/* Sortable Steps */
+.sortable-steps {
+    min-height: 50px;
+}
+
+.sortable-steps .step-item {
+    cursor: move;
+}
+
+.sortable-steps .step-item.ui-sortable-helper {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: rotate(2deg);
+}
+
+.sortable-steps .step-item.ui-sortable-placeholder {
+    background: #e3f2fd;
+    border: 2px dashed #0066ff;
+    visibility: visible !important;
+}
+
+/* Drag Handle */
+.step-item::before {
+    content: '⋮⋮';
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1;
+    margin-right: 8px;
+    cursor: move;
+    user-select: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vlp-admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .vlp-admin-header h2 {
+        font-size: 20px;
+    }
+    
+    .step-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .step-actions {
+        align-self: flex-end;
+    }
+    
+    .step-form .form-table th,
+    .step-form .form-table td {
+        display: block;
+        width: 100%;
+        padding: 8px 0;
+    }
+    
+    .step-form .form-table th {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+    
+    .step-form .regular-text,
+    .step-form .large-text {
+        max-width: 100%;
+    }
+    
+    .submit {
+        text-align: center;
+    }
+    
+    .submit .button,
+    .submit .button-primary {
+        display: block;
+        width: 100%;
+        margin: 4px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .vlp-admin-header {
+        padding: 12px;
+    }
+    
+    .step-item {
+        padding: 12px;
+    }
+    
+    #add-step-form {
+        padding: 16px;
+    }
+    
+    .vlp-stats-table {
+        font-size: 12px;
+    }
+    
+    .vlp-stats-table th,
+    .vlp-stats-table td {
+        padding: 8px;
+    }
+}
+
+/* Loading States */
+.vlp-admin-loading {
+    position: relative;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.vlp-admin-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #ff6600;
+    border-radius: 50%;
+    animation: vlp-admin-spin 1s linear infinite;
+}
+
+@keyframes vlp-admin-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success/Error Messages */
+.vlp-admin-message {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-weight: 500;
+}
+
+.vlp-admin-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.vlp-admin-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.vlp-admin-message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Tooltips */
+.vlp-admin-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.vlp-admin-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+.vlp-admin-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.vlp-admin-tooltip:hover::after,
+.vlp-admin-tooltip:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Accessibility */
+.vlp-admin-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus States */
+.vlp-admin-header .button:focus,
+.submit .button:focus,
+.submit .button-primary:focus {
+    outline: 2px solid #0066ff;
+    outline-offset: 2px;
+}
+
+.step-actions a:focus {
+    outline: 2px solid #0066ff;
+    outline-offset: 2px;
+}

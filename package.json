@@ -1,0 +1,51 @@
+{
+  "name": "avlp-walkthrough-tour",
+  "version": "1.0.0",
+  "description": "A custom WordPress plugin for creating interactive site tours and walkthroughs for the Virtual Leadership Programs platform.",
+  "main": "default-walkthrough.php",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vendor/bin/phpunit tests/unit",
+    "test:integration": "vendor/bin/phpunit tests/integration",
+    "test:e2e": "npx playwright test",
+    "test:coverage": "vendor/bin/phpunit --coverage-html coverage tests/unit",
+    "test:watch": "vendor/bin/phpunit --watch tests/unit",
+    "lint": "phpcs --standard=WordPress includes/ default-walkthrough.php",
+    "lint:fix": "phpcbf --standard=WordPress includes/ default-walkthrough.php",
+    "deploy:staging": "./deploy_to_staging.sh",
+    "build": "echo 'No build process required for WordPress plugin'",
+    "dev": "echo 'Development mode - plugin is ready for testing'"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "walkthrough",
+    "tour",
+    "onboarding",
+    "user-experience",
+    "vlp",
+    "virtual-leadership-programs"
+  ],
+  "author": "Virtual Leadership Programs",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/virtualleadershipprograms/avlp-walkthrough-tour.git"
+  },
+  "bugs": {
+    "url": "https://github.com/virtualleadershipprograms/avlp-walkthrough-tour/issues"
+  },
+  "homepage": "https://virtualleadershipprograms.com",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "php": ">=7.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

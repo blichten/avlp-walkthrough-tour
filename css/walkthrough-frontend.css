@@ -1,0 +1,665 @@
+/**
+ * Frontend styles for AVLP Walkthrough Tour plugin
+ * Following VLP design standards
+ */
+
+/* Tour Container */
+#vlp-walkthrough-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    pointer-events: none;
+}
+
+/* Overlay */
+.vlp-walkthrough-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: all;
+}
+
+/* Tooltip */
+.vlp-walkthrough-tooltip {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    min-width: 300px;
+    pointer-events: all;
+    z-index: 1000000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Modal-specific styling */
+.vlp-walkthrough-tooltip.modal {
+    max-width: 500px;
+    min-width: 400px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+    border: 2px solid #0066FF;
+}
+
+/* Welcome Message Styling */
+.vlp-welcome-message {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.coach-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.coach-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.coach-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.coach-text {
+    flex: 1;
+}
+
+.coach-text h2 {
+    margin: 0 0 15px 0;
+    color: #0066FF;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.coach-text p {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+}
+
+.tour-preview {
+    background: #f8f9ff;
+    border-left: 4px solid #0066FF;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.tour-preview h3 {
+    margin: 0 0 15px 0;
+    color: #0066FF;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.tour-preview ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.tour-preview li {
+    margin: 8px 0;
+    padding: 8px 0;
+    font-size: 15px;
+}
+
+.tour-note {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.tour-note p {
+    margin: 0;
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .coach-intro {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .coach-image {
+        align-self: center;
+    }
+    
+    .coach-text h2 {
+        font-size: 20px;
+    }
+}
+
+/* Tooltip Arrow */
+.vlp-walkthrough-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+}
+
+.vlp-walkthrough-arrow.top {
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: #ffffff;
+}
+
+.vlp-walkthrough-arrow.bottom {
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: #ffffff;
+}
+
+.vlp-walkthrough-arrow.left {
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: #ffffff;
+}
+
+.vlp-walkthrough-arrow.right {
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: #ffffff;
+}
+
+/* Tooltip Content */
+.vlp-walkthrough-content {
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Header */
+.vlp-walkthrough-header {
+    background: #0066ff;
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.vlp-walkthrough-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+}
+
+.vlp-walkthrough-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.vlp-walkthrough-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Body */
+.vlp-walkthrough-body {
+    padding: 20px;
+    color: #333;
+    background: white;
+}
+
+.vlp-walkthrough-body p {
+    margin: 0 0 12px 0;
+}
+
+.vlp-walkthrough-body p:last-child {
+    margin-bottom: 0;
+}
+
+.vlp-walkthrough-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Footer */
+.vlp-walkthrough-footer {
+    padding: 16px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Progress */
+.vlp-walkthrough-progress {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.vlp-walkthrough-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.vlp-walkthrough-progress-fill {
+    height: 100%;
+    background: #ff6600;
+    transition: width 0.3s ease;
+}
+
+.vlp-walkthrough-progress-text {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-top: 8px;
+    font-weight: 500;
+    background: #f8f9fa;
+    padding: 4px 12px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* Actions */
+.vlp-walkthrough-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.vlp-walkthrough-actions .vlp-walkthrough-skip,
+.vlp-walkthrough-actions .vlp-walkthrough-disable {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vlp-walkthrough-actions .vlp-walkthrough-skip:hover,
+.vlp-walkthrough-actions .vlp-walkthrough-disable:hover {
+    background: #5a6268;
+}
+
+.vlp-walkthrough-actions .vlp-walkthrough-prev {
+    background: #0066ff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vlp-walkthrough-actions .vlp-walkthrough-prev:hover {
+    background: #0052cc;
+}
+
+.vlp-walkthrough-actions .vlp-walkthrough-next {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vlp-walkthrough-actions .vlp-walkthrough-next:hover {
+    background: #e55a00;
+}
+
+.vlp-walkthrough-actions .vlp-walkthrough-next:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Highlighted Element */
+.vlp-walkthrough-highlight {
+    position: relative;
+    z-index: 999998;
+    box-shadow: 0 0 0 4px #ff6600;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Tour Trigger Buttons */
+.vlp-walkthrough-trigger {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.vlp-walkthrough-trigger:hover {
+    background: #e55a00;
+    color: white;
+    text-decoration: none;
+}
+
+.vlp-walkthrough-trigger:focus {
+    outline: 2px solid #0066ff;
+    outline-offset: 2px;
+}
+
+.vlp-walkthrough-element-trigger {
+    margin: 8px 0;
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+/* Statistics */
+.vlp-walkthrough-stats {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+}
+
+.vlp-stats-completion-rate {
+    text-align: center;
+}
+
+.vlp-stats-completion-rate strong {
+    display: block;
+    font-size: 24px;
+    color: #ff6600;
+    margin-bottom: 8px;
+}
+
+.vlp-stats-breakdown {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+}
+
+.vlp-stats-breakdown span {
+    font-size: 12px;
+    color: #666;
+}
+
+.vlp-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.vlp-stats-table th,
+.vlp-stats-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.vlp-stats-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vlp-walkthrough-tooltip {
+        max-width: 90vw;
+        min-width: 280px;
+        margin: 0 5vw;
+    }
+    
+    .vlp-walkthrough-header {
+        padding: 12px 16px;
+    }
+    
+    .vlp-walkthrough-title {
+        font-size: 16px;
+    }
+    
+    .vlp-walkthrough-body {
+        padding: 16px;
+    }
+    
+    .vlp-walkthrough-footer {
+        padding: 12px 16px;
+    }
+    
+    .vlp-walkthrough-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .vlp-walkthrough-actions .vlp-walkthrough-skip,
+    .vlp-walkthrough-actions .vlp-walkthrough-disable {
+        order: 1;
+        margin-bottom: 8px;
+    }
+    
+    .vlp-walkthrough-actions .vlp-walkthrough-prev,
+    .vlp-walkthrough-actions .vlp-walkthrough-next {
+        order: 2;
+    }
+    
+    .vlp-stats-breakdown {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vlp-walkthrough-tooltip {
+        max-width: 95vw;
+        min-width: 260px;
+        margin: 0 2.5vw;
+    }
+    
+    .vlp-walkthrough-header {
+        padding: 10px 12px;
+    }
+    
+    .vlp-walkthrough-title {
+        font-size: 14px;
+    }
+    
+    .vlp-walkthrough-body {
+        padding: 12px;
+        font-size: 13px;
+    }
+    
+    .vlp-walkthrough-footer {
+        padding: 10px 12px;
+    }
+    
+    .vlp-walkthrough-actions .vlp-walkthrough-prev,
+    .vlp-walkthrough-actions .vlp-walkthrough-next {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+/* Animation Classes */
+.vlp-walkthrough-fade-in {
+    animation: vlp-walkthrough-fade-in 0.3s ease-in-out;
+}
+
+.vlp-walkthrough-fade-out {
+    animation: vlp-walkthrough-fade-out 0.3s ease-in-out;
+}
+
+.vlp-walkthrough-slide-in {
+    animation: vlp-walkthrough-slide-in 0.3s ease-out;
+}
+
+.vlp-walkthrough-slide-out {
+    animation: vlp-walkthrough-slide-out 0.3s ease-in;
+}
+
+@keyframes vlp-walkthrough-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes vlp-walkthrough-fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes vlp-walkthrough-slide-in {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes vlp-walkthrough-slide-out {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* Loading State */
+.vlp-walkthrough-loading {
+    position: relative;
+}
+
+.vlp-walkthrough-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #ff6600;
+    border-radius: 50%;
+    animation: vlp-walkthrough-spin 1s linear infinite;
+}
+
+@keyframes vlp-walkthrough-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Accessibility */
+.vlp-walkthrough-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .vlp-walkthrough-tooltip {
+        border: 2px solid #000;
+    }
+    
+    .vlp-walkthrough-header {
+        background: #000;
+    }
+    
+    .vlp-walkthrough-actions .vlp-walkthrough-next {
+        background: #000;
+        border: 2px solid #000;
+    }
+    
+    .vlp-walkthrough-actions .vlp-walkthrough-prev {
+        background: #000;
+        border: 2px solid #000;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .vlp-walkthrough-tooltip,
+    .vlp-walkthrough-highlight,
+    .vlp-walkthrough-progress-fill {
+        transition: none;
+    }
+    
+    .vlp-walkthrough-fade-in,
+    .vlp-walkthrough-fade-out,
+    .vlp-walkthrough-slide-in,
+    .vlp-walkthrough-slide-out {
+        animation: none;
+    }
+}
