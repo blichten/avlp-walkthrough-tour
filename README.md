@@ -1,163 +1,102 @@
 # AVLP Walkthrough Tour Plugin
 
-A custom WordPress plugin for creating interactive site tours and walkthroughs for the Virtual Leadership Programs platform.
+A custom WordPress plugin for creating interactive site tours and walkthroughs for the AVLP (Virtual Leadership Programs) platform.
 
 ## Features
 
-- **Responsive Design**: Mobile-friendly tours that work on all devices
-- **Modal Implementation**: Popup-blocker safe modals using DOM overlays
-- **Element Adaptability**: Flexible element targeting with automatic fallbacks
-- **User Tracking**: Page-by-page completion tracking with user preferences
-- **Admin Interface**: Visual tour builder with drag-and-drop step management
-- **Multiple Triggers**: Automatic, manual, and URL parameter triggers
-- **Dynamic Content**: Support for shortcodes and user-specific content
-- **VLP Integration**: Follows VLP design standards and integrates with existing plugins
+### 🎯 **Core Functionality**
+- **Responsive Design**: Mobile-friendly modals that work across all devices
+- **Element Targeting**: Target page elements using CSS selectors
+- **Modal Positioning**: Support for centered modals and element-relative positioning
+- **Progress Tracking**: Optional step counter (1/3, 2/3, etc.) per tour
+- **User Management**: Track completion, skipping, and permanent disabling
+
+### 🎨 **User Experience**
+- **Auto-trigger**: Tours start automatically on first page visit
+- **Manual Trigger**: Trigger tours via shortcode or URL parameters
+- **Skip Options**: Users can skip for current visit or permanently disable
+- **Dynamic Content**: Support for WordPress shortcodes in tour content
+- **Welcome Messages**: Special modal positioning for welcome/intro content
+
+### ⚙️ **Admin Interface**
+- **Tour Management**: Create, edit, and manage multiple tours
+- **Step Builder**: Add, reorder, and configure tour steps
+- **Settings Control**: Enable/disable progress tracking per tour
+- **User Analytics**: Track user interactions and completion rates
 
 ## Installation
 
-1. Upload the plugin files to `/wp-content/plugins/avlp-walkthrough-tour/`
-2. Activate the plugin through the WordPress admin
-3. Navigate to **AVLP Admin > Walkthrough Tours** to create your first tour
+1. **Upload** the plugin files to `/wp-content/plugins/avlp-walkthrough-tour/`
+2. **Activate** the plugin through the WordPress admin
+3. **Configure** tours through the admin interface
 
-## Quick Start
+## Database Tables
 
-### Creating a Tour
+The plugin creates three custom tables:
+
+- `pus_avlp_tours` - Tour definitions and settings
+- `pus_avlp_tour_steps` - Individual tour steps
+- `pus_avlp_tour_user_tracking` - User interaction tracking
+
+## Usage
+
+### Creating Tours
 
 1. Go to **AVLP Admin > Walkthrough Tours**
 2. Click **Add New Tour**
-3. Fill in the tour details:
-   - **Tour Name**: Display name for the tour
-   - **Description**: Optional description
-   - **Trigger Type**: How the tour should be triggered
+3. Configure tour settings:
+   - **Name & Description**: Basic tour information
+   - **Trigger Type**: Automatic, Manual, or URL Parameter
+   - **Progress Tracker**: Enable/disable step counter
    - **Status**: Active/Inactive
-4. Click **Create Tour**
 
 ### Adding Steps
 
-1. After creating a tour, click **Manage Steps**
+1. **Edit** your tour
 2. Click **Add Step**
-3. Configure each step:
-   - **Step Title**: Title shown in the tooltip
-   - **Step Content**: Content with HTML support and shortcodes
-   - **Target Selector**: CSS selector for the element to highlight
-   - **Position**: Tooltip position (auto, top, bottom, left, right)
-   - **Page URL Pattern**: Optional page restriction
-   - **Step Order**: Order in the tour sequence
+3. Configure step settings:
+   - **Title & Content**: Step information
+   - **Target Selector**: CSS selector for element targeting
+   - **Position**: Auto, Top, Bottom, Left, Right, or Modal
+   - **Page URL Pattern**: Optional page-specific targeting
 
-### Tour Triggers
+### Targeting Elements
 
-#### Automatic Trigger
-Tours start automatically when users visit matching pages for the first time.
+Use CSS selectors to target elements:
 
-#### Manual Trigger
-Use the shortcode to add tour trigger buttons:
-```
-[vlp_walkthrough_tour tour_id="1" text="Start Tour"]
-```
+```css
+/* ID selector */
+#vlp-chat-left
 
-#### URL Parameter Trigger
-Add `?show_tour=1` to any URL to trigger tours on that page.
+/* Class selector */
+.elementor-widget-video
 
-## Shortcodes
+/* Complex selector */
+.elementor-column[data-id="4d7ffbcb"] .elementor-widget-video
 
-### Tour Trigger
-```
-[vlp_walkthrough_tour tour_id="1" text="Start Tour" class="custom-class"]
+/* Data attribute */
+[data-element_type="widget"][data-widget_type="video.default"]
 ```
 
-### Element Trigger
-```
-[vlp_walkthrough_trigger tour_id="1" element=".my-element" text="Learn More"]
-```
+### Shortcodes
 
-### Statistics
-```
-[vlp_walkthrough_stats tour_id="1" show="completion_rate"]
-[vlp_walkthrough_stats tour_id="1" show="all"]
+Use WordPress shortcodes in tour content:
+
+```php
+[vlp_user_field field="coach_image"]
+[vlp_user_field field="user_name"]
 ```
 
-## Dynamic Content
-
-### User Fields
-Include user-specific data in tour content:
-```
-Hello [vlp_user_field field="first_name"]! Welcome to the platform.
-```
-
-### Coach Images
-Display user's assigned coach image:
-```
-[vlp_coach_image size="small"]
-```
-
-### Other Shortcodes
-Any existing VLP shortcodes can be used in tour content.
-
-## Styling
-
-The plugin follows VLP design standards:
-- **Primary Color**: #0066ff (Blue)
-- **CTA Color**: #ff6600 (Orange)
-- **Responsive Design**: Works on all screen sizes
-- **Accessibility**: Keyboard navigation and screen reader support
-
-## User Experience
-
-### Tour Controls
-- **Next/Previous**: Navigate through steps
-- **Skip Tour**: Skip for current session
-- **Don't show tours again**: Permanently disable tours
-- **Close**: Close tour at any time
-
-### Keyboard Navigation
-- **Arrow Keys**: Navigate between steps
-- **Enter**: Next step
-- **Escape**: Close tour
-
-### Mobile Support
-- Touch-friendly controls
-- Responsive positioning
-- Optimized for small screens
-
-## Admin Interface
-
-### Tour Management
-- Create, edit, and delete tours
-- Set trigger types and values
-- Manage tour status
-
-### Step Management
-- Drag-and-drop step ordering
-- Visual element selector
-- Rich text content editor
-- Step-specific settings
-
-### Analytics
-- Completion rates
-- User interaction tracking
-- Tour performance metrics
-
-## Database Schema
-
-### Tables
-- `wp_avlp_tours`: Tour definitions
-- `wp_avlp_tour_steps`: Individual tour steps
-- `wp_avlp_tour_user_tracking`: User interaction tracking
-
-### User Preferences
-- Session-based skip tracking
-- Permanent disable preferences
-- Progress tracking per user/page
-
-## Development
+## Technical Details
 
 ### File Structure
+
 ```
 avlp-walkthrough-tour/
 ├── default-walkthrough.php          # Main plugin file
 ├── includes/
-│   ├── walkthrough-admin.php        # Admin interface
 │   ├── walkthrough-database.php     # Database operations
+│   ├── walkthrough-admin.php        # Admin interface
 │   ├── walkthrough-frontend.php     # Frontend functionality
 │   └── walkthrough-shortcodes.php   # Shortcode handlers
 ├── css/
@@ -166,87 +105,40 @@ avlp-walkthrough-tour/
 ├── js/
 │   ├── walkthrough-admin.js         # Admin JavaScript
 │   └── walkthrough-frontend.js      # Frontend tour engine
-├── tests/                           # Testing framework
-└── monitoring/                      # Production monitoring
+└── deploy_to_staging.sh             # Deployment script
 ```
 
-### Testing
+### Key Functions
+
+- `vlp_walkthrough_create_tour()` - Create new tours
+- `vlp_walkthrough_get_active_tours_for_page()` - Get tours for current page
+- `vlp_walkthrough_track_user_interaction()` - Track user actions
+- `vlp_walkthrough_process_step_content()` - Process shortcodes
+
+## Deployment
+
+Use the included deployment script:
+
 ```bash
-# Run unit tests
-npm run test:unit
-
-# Run E2E tests
-npm run test:e2e
-
-# Run all tests
-npm test
-```
-
-### Deployment
-```bash
-# Deploy to staging
-npm run deploy:staging
-
-# Or use the script directly
 ./deploy_to_staging.sh
 ```
 
-## Configuration
+This script deploys all plugin files to the staging server via SCP.
 
-### Plugin Options
-- `vlp_walkthrough_enabled`: Enable/disable tours globally
-- `vlp_walkthrough_auto_trigger`: Enable automatic triggers
-- `vlp_walkthrough_url_trigger`: URL parameter name for manual triggers
-- `vlp_walkthrough_animation_speed`: Animation speed in milliseconds
-- `vlp_walkthrough_show_progress`: Show progress indicators
-- `vlp_walkthrough_allow_skip`: Allow users to skip tours
-- `vlp_walkthrough_allow_disable`: Allow users to disable tours permanently
+## Version History
 
-## Troubleshooting
-
-### Common Issues
-
-1. **Tours not appearing**
-   - Check if tours are enabled in settings
-   - Verify tour is active and has steps
-   - Check user hasn't disabled tours permanently
-
-2. **Elements not found**
-   - Verify CSS selectors are correct
-   - Check if elements exist on the page
-   - Use browser developer tools to test selectors
-
-3. **Styling issues**
-   - Check for CSS conflicts with theme
-   - Verify plugin CSS is loading
-   - Test responsive design on different devices
-
-### Debug Mode
-Enable WordPress debug mode to see detailed error messages:
-```php
-define('WP_DEBUG', true);
-define('WP_DEBUG_LOG', true);
-```
+### v1.0.0
+- Initial release
+- Complete tour functionality
+- Progress tracking
+- User management
+- Admin interface
+- Responsive design
 
 ## Support
 
-For support and feature requests, please contact the Virtual Leadership Programs development team.
-
-## Changelog
-
-### Version 1.0.0
-- Initial release
-- Core tour functionality
-- Admin interface
-- User tracking
-- Responsive design
-- VLP integration
+For issues or questions, contact the VLP development team.
 
 ## License
 
-This plugin is licensed under the GPL v2 or later.
-
----
-
-**Virtual Leadership Programs**  
-https://virtualleadershipprograms.com
+GPL v2 or later
