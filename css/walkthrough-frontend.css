@@ -62,23 +62,12 @@
     margin-bottom: 25px;
 }
 
-/* Coach image styling - minimal to avoid conflicts but fix alignment */
+/* Coach image styling - no rounding, let shortcode handle all styling */
 .coach-image {
     flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.coach-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
 }
 
 .coach-text {
