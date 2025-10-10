@@ -3,7 +3,7 @@
  * Plugin Name: AVLP - Walkthrough Tour
  * Plugin URI: https://virtualleadershipprograms.com
  * Description: A custom plugin for creating interactive site tours and walkthroughs for the Virtual Leadership Programs platform.
- * Version: 1.0.0
+ * Version: 1.1.0
  * 
  * Author: Virtual Leadership Programs
  * Author URI: https://virtualleadershipprograms.com
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 // Define plugin paths and version
 define('VLP_WALKTHROUGH_DIR', plugin_dir_path(__FILE__));
 define('VLP_WALKTHROUGH_URL', plugin_dir_url(__FILE__));
-define('VLP_WALKTHROUGH_VERSION', '1.0.0');
+define('VLP_WALKTHROUGH_VERSION', '1.1.0');
 
 // Include supporting files
 require_once VLP_WALKTHROUGH_DIR . '/includes/walkthrough-database.php';
@@ -215,8 +215,8 @@ function vlp_walkthrough_ajax_track_interaction() {
     
     $user_id = is_user_logged_in() ? get_current_user_id() : 0;
     $tour_id = intval($_POST['tour_id']);
-    $action = sanitize_text_field($_POST['action_type']);
-    $page_url = sanitize_text_field($_POST['page_url']);
+    $action = isset($_POST['action_type']) ? sanitize_text_field(wp_unslash($_POST['action_type'])) : '';
+    $page_url = isset($_POST['page_url']) ? sanitize_text_field(wp_unslash($_POST['page_url'])) : '';
     $step_completed = intval($_POST['step_completed']);
     
     // Track the interaction
@@ -237,7 +237,7 @@ function vlp_walkthrough_ajax_get_tour() {
     }
     
     $tour_id = intval($_POST['tour_id']);
-    $page_url = sanitize_text_field($_POST['page_url']);
+    $page_url = isset($_POST['page_url']) ? sanitize_text_field(wp_unslash($_POST['page_url'])) : '';
     
     $tour_data = vlp_walkthrough_get_tour_for_ajax($tour_id, $page_url);
     
@@ -257,7 +257,7 @@ function vlp_walkthrough_ajax_get_page_tours() {
         wp_die('Security check failed');
     }
     
-    $current_url = sanitize_text_field($_POST['current_url']);
+    $current_url = isset($_POST['current_url']) ? sanitize_text_field(wp_unslash($_POST['current_url'])) : '';
     $user_id = get_current_user_id();
     
     // Get active tours for this page

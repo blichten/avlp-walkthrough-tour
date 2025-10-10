@@ -519,10 +519,10 @@ function vlp_walkthrough_admin_save_tour() {
     }
     
     $tour_data = array(
-        'tour_name' => sanitize_text_field($_POST['tour_name']),
-        'tour_description' => sanitize_textarea_field($_POST['tour_description']),
-        'tour_trigger_type' => sanitize_text_field($_POST['tour_trigger_type']),
-        'tour_trigger_value' => sanitize_text_field($_POST['tour_trigger_value']),
+        'tour_name' => isset($_POST['tour_name']) ? sanitize_text_field(wp_unslash($_POST['tour_name'])) : '',
+        'tour_description' => isset($_POST['tour_description']) ? sanitize_textarea_field(wp_unslash($_POST['tour_description'])) : '',
+        'tour_trigger_type' => isset($_POST['tour_trigger_type']) ? sanitize_text_field(wp_unslash($_POST['tour_trigger_type'])) : '',
+        'tour_trigger_value' => isset($_POST['tour_trigger_value']) ? sanitize_text_field(wp_unslash($_POST['tour_trigger_value'])) : '',
         'show_progress' => isset($_POST['show_progress']) && $_POST['show_progress'] ? 1 : 0,
         'is_active' => isset($_POST['is_active']) && $_POST['is_active'] ? 1 : 0
     );
@@ -559,11 +559,11 @@ function vlp_walkthrough_admin_save_step() {
     $step_data = array(
         'tour_id' => intval($_POST['tour_id']),
         'step_order' => intval($_POST['step_order']),
-        'step_title' => sanitize_text_field($_POST['step_title']),
-        'step_content' => wp_kses_post($_POST['step_content']),
-        'target_selector' => sanitize_text_field($_POST['target_selector']),
-        'step_position' => sanitize_text_field($_POST['step_position']),
-        'page_url_pattern' => sanitize_text_field($_POST['page_url_pattern'])
+        'step_title' => isset($_POST['step_title']) ? sanitize_text_field(wp_unslash($_POST['step_title'])) : '',
+        'step_content' => isset($_POST['step_content']) ? wp_kses_post(wp_unslash($_POST['step_content'])) : '',
+        'target_selector' => isset($_POST['target_selector']) ? sanitize_text_field(wp_unslash($_POST['target_selector'])) : '',
+        'step_position' => isset($_POST['step_position']) ? sanitize_text_field(wp_unslash($_POST['step_position'])) : '',
+        'page_url_pattern' => isset($_POST['page_url_pattern']) ? sanitize_text_field(wp_unslash($_POST['page_url_pattern'])) : ''
     );
     
     $step_id = isset($_POST['step_id']) ? intval($_POST['step_id']) : 0;
@@ -643,7 +643,7 @@ function vlp_walkthrough_admin_reorder_steps() {
         wp_die('You do not have sufficient permissions to perform this action.');
     }
     
-    $step_ids = $_POST['step_ids'];
+    $step_ids = isset($_POST['step_ids']) ? array_map('intval', (array) $_POST['step_ids']) : array();
     
     foreach ($step_ids as $order => $step_id) {
         vlp_walkthrough_update_tour_step($step_id, array('step_order' => $order + 1));
