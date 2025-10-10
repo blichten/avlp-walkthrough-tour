@@ -282,14 +282,21 @@
                 this.centerTooltip();
                 this.hideArrow();
                 $(this.tooltip).addClass('modal');
+                // Show full overlay for modal steps
+                $('.vlp-walkthrough-overlay').css('background', 'rgba(0, 0, 0, 0.55)');
                 return;
             }
             
             if (!this.highlightedElement) {
                 // Center tooltip if no target element
                 this.centerTooltip();
+                // Show full overlay when no element is highlighted
+                $('.vlp-walkthrough-overlay').css('background', 'rgba(0, 0, 0, 0.55)');
                 return;
             }
+
+            // Hide overlay background for spotlight effect (element's box-shadow handles it)
+            $('.vlp-walkthrough-overlay').css('background', 'transparent');
 
             const element = $(this.highlightedElement);
             const elementRect = element[0].getBoundingClientRect();
