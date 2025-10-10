@@ -306,8 +306,7 @@ function vlp_walkthrough_ajax_get_page_tours() {
                     'step_title' => $step->step_title,
                     'step_content' => $step_content,
                     'target_selector' => $step->target_selector,
-                    'step_position' => $step->step_position,
-                    'step_delay' => $step->step_delay
+                    'step_position' => $step->step_position
                 );
             }
             
